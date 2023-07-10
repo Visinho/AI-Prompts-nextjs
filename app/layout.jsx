@@ -1,5 +1,6 @@
 import "@styles/globals.css";
 import Nav from "@components/Nav";
+import Feed from "@components/Feed";
 import Provider from "@components/Provider";
 
 export const metadata = {

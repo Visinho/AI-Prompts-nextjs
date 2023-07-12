@@ -5,10 +5,29 @@ import PromptCard from "./PromptCard";
 
 const Feed = () => {
 
-  const [searchText, setsearchText] = useState("")
+  const [searchText, setsearchText] = useState("");
+  const [ posts, setPosts ] = useState([]);
 
   const handleSearchChange = (e) => {
 
+  }
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await fetch("/api/prompts");
+      const data = await response.json();
+
+      setPosts(data);
+    }
+    fetchPosts();
+  }, [])
+
+  const PromptCardList = ({ data, handleTagClick}) => {
+      return (
+        <div className="mt-16 prompt_layout">
+
+        </div>
+      )
   }
 
   return (
@@ -22,6 +41,11 @@ const Feed = () => {
           onChange={handleSearchChange}
           required />
       </form>
+
+      <PromptCardList 
+        data={posts}
+        handleTagClick={() => {}}
+      />
     </section>
   );
 };

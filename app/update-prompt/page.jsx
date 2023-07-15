@@ -18,7 +18,7 @@ const EditPrompt = () => {
   useEffect(() => {
     const getPromptDetails = async () => {
     const response = await fetch(`/api/prompt/${promptId}`)
-        const data = await response.json();
+    const data = await response.json();
 
         setPost({
             prompt: data.prompt,
@@ -29,29 +29,30 @@ if(promptId) getPromptDetails();
   }, [promptId])
   
 
-//   const createPrompt = async (e) => {
-//     e.preventDefault();
-//     setsubmitting(true);
+  const updatePrompt = async (e) => {
+    e.preventDefault();
+    setsubmitting(true);
 
-//     try {
-//       const response = await fetch("/api/prompt/new", {
-//         method: "POST",
-//         body: JSON.stringify({
-//           prompt: post.prompt,
-//           userId: session?.user.id,
-//           tag: post.tag,
-//         }),
-//       });
+    if(!promptId) return alert("Prompt ID not found");
 
-//       if (response.ok) {
-//         router.push("/");
-//       }
-//     } catch (error) {
-//       console.log(error);
-//     } finally {
-//       setsubmitting(false);
-//     }
-//   };
+    try {
+      const response = await fetch(`/api/prompt/${promptId}`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          prompt: post.prompt,
+          tag: post.tag,
+        }),
+      });
+
+      if (response.ok) {
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setsubmitting(false);
+    }
+  };
 
   return (
     <Form
@@ -59,7 +60,7 @@ if(promptId) getPromptDetails();
       post={post}
       setPost={setPost}
       submitting={submitting}
-      handleSubmit={() => {}}
+      handleSubmit={updatePrompt}
     />
   );
 };

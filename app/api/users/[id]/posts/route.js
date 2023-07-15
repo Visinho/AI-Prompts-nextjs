@@ -9,6 +9,8 @@ export const GET = async (request, { params }) => {
             creator: params.id
         }).populate("creator");
 
+        
+
         return new Response(JSON.stringify(prompts), { status: 200 })
     } catch (error) {
         return new Response(JSON.stringify("Failed to fetch prompts"), { status: 500 })

@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
 const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
+  const { data: session } = useSession();
   const [copied, setcopied] = useState("");
 
   const handleCopy = () => {

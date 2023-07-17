@@ -37,8 +37,9 @@ const Feed = () => {
     fetchPosts();
   }, []);
 
-  const filterPrompts = (searchtext) => {
-    const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
+  const filterPrompts = (searchText) => {
+    const trimmedSearchText = searchText.trim(); // Added this line, Trim the whitespace from the search text
+    const regex = new RegExp(trimmedSearchText, "i"); // 'i' flag for case-insensitive search
     return allPosts.filter(
       (item) =>
         regex.test(item.creator.username) ||
@@ -80,15 +81,27 @@ const Feed = () => {
         />
       </form>
 
+      <h1 className='head_text text-center mt-4'>
+          All Prompts
+      </h1>
+
       {/* All Prompts */}
+
       {searchText ? (
+      searchedResults.length > 0 ? (
         <PromptCardList
           data={searchedResults}
           handleTagClick={handleTagClick}
         />
       ) : (
-        <PromptCardList data={allPosts} handleTagClick={handleTagClick} />
-      )}
+        <p className="text-center text-red-500">No results found for '{searchText}'.</p>
+      )
+    ) : (
+      <PromptCardList
+        data={allPosts}
+        handleTagClick={handleTagClick}
+      />
+    )}
     </section>
   );
 };

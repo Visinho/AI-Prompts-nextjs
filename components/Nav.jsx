@@ -24,7 +24,7 @@ const Nav = () => {
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
         <Image
-          src="/assets/images/Visinho.jpeg"
+          src="/assets/images/Logo.png"
           width={30}
           height={30}
           alt="Visinho"

@@ -81,7 +81,7 @@ const Feed = () => {
         />
       </form>
 
-      <h1 className='head_text text-center mt-4'>
+      <h1 className='head_text text-center'>
           All Prompts
       </h1>
 
@@ -94,7 +94,7 @@ const Feed = () => {
           handleTagClick={handleTagClick}
         />
       ) : (
-        <p className="text-center text-red-500">No results found for '{searchText}'.</p>
+        <p className="text-center text-red-500 mt-10">No results found for '{searchText}'.</p>
       )
     ) : (
       <PromptCardList

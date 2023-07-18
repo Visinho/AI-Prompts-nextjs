@@ -20,6 +20,7 @@ const UserProfile = ({ params }) => {
     };
 
     if (params?.id) fetchPosts();
+    console.log(fetchPosts)
   }, [params.id]);
 
   return (

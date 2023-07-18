@@ -81,9 +81,13 @@ const Feed = () => {
         />
       </form>
 
-      <h1 className='head_text text-center'>
+      <h1 className='head_text text-center mt-14'>
           All Prompts
       </h1>
+
+      <p className="desc text-left max-w-md">
+        Click on the username on each prompt to display all prompts made by a particular user.
+      </p>
 
       {/* All Prompts */}
 

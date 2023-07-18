@@ -7,7 +7,7 @@ import Profile from "@components/Profile";
 
 const UserProfile = ({ params }) => {
   const searchParams = useSearchParams();
-  const userName = searchParams.get("name");
+  const userName = searchParams.get("username");
 
   const [userPosts, setUserPosts] = useState([]);
 
